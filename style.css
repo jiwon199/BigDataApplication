@@ -1,0 +1,139 @@
+table.type11 {
+  border-collapse: separate;
+  border-spacing: 0px;
+  text-align: center;
+
+  width: 1200px;
+  margin: 0 auto;
+}
+
+table.type11 th {
+  width: 155px;
+  padding: 10px;
+
+  vertical-align: top;
+  color: #fff;
+  background: rgb(0, 0, 0);
+}
+
+table.type11 td {
+  width: 155px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1.5px solid rgb(230, 230, 230);
+  background: rgb(247, 248, 248);
+}
+
+table.type22 {
+  border-collapse: separate;
+  border-spacing: 0px;
+  width: 100%;
+
+  border-top: 1px solid rgb(140, 142, 144);
+  margin: 0 auto;
+}
+
+table.type22 tr {
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+table.type22 td {
+  border-collapse: separate;
+  border-spacing: 0px;
+
+  padding: 10px;
+  border-bottom: 1px solid rgb(140, 142, 144);
+}
+div.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5px;
+}
+div.specificInfo {
+  text-align: center;
+
+  padding: 20px;
+  background: rgb(230, 230, 230);
+  border: none;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+div.searchOption {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+div.commentArea {
+  text-align: left;
+  padding: 10px;
+}
+input[type="text"],
+select {
+  width: 200px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 10px;
+
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type="submit"] {
+  width: 200px;
+  background-color: rgb(0, 70, 42);
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#rep_bt {
+  width: 80px;
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: rgb(0, 70, 42);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#close {
+  width: 80px;
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: rgb(0, 70, 42);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#contentArea {
+  width: 800px;
+  height: 40px;
+  margin-bottom: -15px;
+}
+#contentArea2 {
+  width: 800px;
+  height: 40px;
+}
+#deleteBtn {
+  width: 70px;
+  background-color: rgb(230, 230, 230);
+  border: none;
+  padding: 5px 7px;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+#updateBtn {
+  width: 70px;
+  background-color: rgb(230, 230, 230);
+  border: none;
+  padding: 5px 7px;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
