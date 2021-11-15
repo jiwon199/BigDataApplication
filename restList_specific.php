@@ -83,6 +83,24 @@
                  
                
             }
+
+            if(isset($_POST[ 'deletename' ])&&isset($_POST[ 'deletecontent' ])){
+                $nameD=$_POST[ 'deletename' ];
+                $commentD=$_POST[ 'deletecontent' ];
+                $delete="delete from comment where nickname= '$nameD' and comment='$commentD'";
+                $deleteRes = mysqli_query($mysqli,$delete); 
+                if($deleteRes){
+                    echo "<script> alert('delete complete');</script>";
+                    echo ("<script>location.href='./restList_specific.php?restName=$restName'</script>") ;
+                     
+                }
+                else{
+                    echo "<script> alert('fail');</script>";
+                    printf("error: %s\n", mysqli_error($mysqli));
+                }
+               
+            }
+          
           
             
                    
@@ -131,14 +149,43 @@
              <table class="type22">
 
                  <?php
+
+                 function testFunc(){
+                    echo "<script>alert('fail');</script>";
+                 }
               if($res3){
                 while($newArray=mysqli_fetch_array($res3,MYSQLI_ASSOC)){
                     $name=$newArray['nickname'];
                     $comment=$newArray['comment'];     
                                    
-                    echo "<tr> <td> <b> $name </b>      ";                  
-                    echo" <button id = 'updateBtn'> delete </button>";           
-                    echo" <button id = 'deleteBtn'> delete </button>";
+                    echo "<tr> <td> <b> $name </b>";               
+                     
+                    ?>
+
+                 <form action="modifyComment.php" method="post" target="payviewer"
+                     onsubmit="window.open('modifyComment.php', 'payviewer', 'width=1000, height=80, top=240, left=150');">
+
+                     <?php
+                     echo "
+                      
+                     <input type='hidden' name='comment' value='$comment'>
+                     <input type='hidden' name='name' value='$name'>
+                     <input type='submit' id='updateBtn' value='update'>
+                 </form>";
+?>
+
+
+
+                     <form action="restList_specific.php?restName=<?php echo $restName;?>&' " method=post>
+
+                         <input type="hidden" name='deletename' value='<?php echo $name;?>'>
+                         <input type="hidden" name='deletecontent' value='<?php echo $comment;?>'>
+                         <input type="submit" id=deleteBtn class=deleteBtn value="delete">
+                     </form>
+
+
+
+                     <?php
                     echo " <br> $comment </td></tr>" ;
                  }
                  }else{
