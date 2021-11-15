@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
 
 <div class="wrapper">
     <h1 class="my-5">This is <?php echo htmlspecialchars($_SESSION["username"]); ?>'s Page</h1>
-    <a href="welcome.php" class="btn btn-primary">Back to main</a>
+    <a href="restlist.php" class="btn btn-primary">Back to main</a>
     <p></p>
     <a href="reset-password.php" class="btn btn-outline-secondary">Reset Password</a>
     <a href="logout.php" class="btn btn-outline-danger">Logout</a>
