@@ -3,10 +3,16 @@
  <HEAD>
      <TITLE>Retaurant List</TITLE>
      <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <style>
+        .mypage{ width: 100%; margin: 20px;}
+    </style>
  </HEAD>
 
  <BODY>
-
+    <div class='mypage'>
+        <a href="mypage.php" class="btn btn-outline-primary">My Page</a>
+    </div>
 
      <div class="searchOption">
          <form action="restList.php" method=post>
@@ -29,7 +35,7 @@
        
        
       function QueryRun($sql) {
-        $mysqli = mysqli_connect("localhost","root","1234","restTest_db");
+        $mysqli = mysqli_connect("localhost","root","pw","BDAproject");
         if (mysqli_connect_errno()) {
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
