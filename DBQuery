@@ -1,0 +1,47 @@
+
+/* createDB, useDB는 각자 로컬에서 */
+CREATE TABLE restList (
+    restID int(11) NOT NULL AUTO_INCREMENT,
+    restName VARCHAR(80) DEFAULT NULL,
+    rest_type VARCHAR(80) DEFAULT NULL,
+    rate float(10) DEFAULT NULL,
+    addr VARCHAR(80) DEFAULT NULL,
+    tel VARCHAR(80) DEFAULT NULL,
+    location VARCHAR(80) DEFAULT NULL,
+    PRIMARY KEY (restID)
+) ;
+
+CREATE TABLE food (
+   rest VARCHAR(80) DEFAULT NULL,
+    food VARCHAR(80) DEFAULT NULL 
+) ;
+
+CREATE TABLE comment (
+   rest VARCHAR(80) DEFAULT NULL,
+   comment VARCHAR(140) DEFAULT NULL ,
+   nickname VARCHAR(80) DEFAULT NULL
+    
+) ;
+
+insert into restList(restName,rest_type,rate,addr,tel,location) values 
+('Jalsa','Casual Dining',4.8,'942, 21st Main Road, 2nd Stage, Banashankari, Bangalore','080 42297555','Banashankari'),
+('Onesta','Cafe',4.6,'1st Floor, Annakuteera, 3rd Stage, Banashankari, Bangalore','080 4264555','Kumaraswamy'),
+('lalala','Cafe',4.3,'2st Floor, Annakuteera, 3rd Stage, Banashankari, Bangalore','080 4267555','Kumaraswamy');
+
+
+insert into food(rest,food) values ('lalala','ICE Coffee'),
+('lalala','Hot Coffee'),
+('Onesta','Hot Coffee'),
+('Onesta','ICE Coffee'),
+('Onesta','Latte'),
+('Jalsa','pasta'),
+('Jalsa','pizza');
+
+insert into comment(rest,comment,nickname) values 
+('lalala','nice.','Jiwon'),
+('Onesta','my favorite','Kim'),
+('Onesta','good to study','Kim'),
+('Onesta','I love it','Jiwon'),
+('Jalsa','wow delicious','James'),
+('Jalsa','it is dirty','KIM');
+ 
