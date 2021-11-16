@@ -9,26 +9,22 @@
 
 
     <?php
+    
     $comment=$_POST['comment'];
     $name=$_POST['name'];
+    require_once "config.php";
 
-
+    
     if(isset($_POST[ 'contentArea' ])){
         $val=$_POST[ 'contentArea' ];
         
-        if($val!=null&&$val!=""){
-        $mysqli = mysqli_connect("localhost","root","1234","restTest_db");
-        if (mysqli_connect_errno()) {
-            echo "<script>alert('fail');</script>";
-       
-        } else {
-             
+        if($val!=null&&$val!=""){        
             $sql="update comment set comment='$val' where nickname='$name' and comment = '$comment'";
             $res = mysqli_query($mysqli,$sql);
             
             if(!$res){
                 echo "<script>alert('fail');</script>";
-            }                 
+                          
         }
          mysqli_close($mysqli);
    
