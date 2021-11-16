@@ -135,7 +135,20 @@
          </div>
 
          <div class="commentArea">
-             comment <br>
+             comment 
+             <?php
+             $commentN="SELECT rest,COUNT(comment) AS commentNum FROM comment GROUP BY rest having rest= '$restName'; ";
+             $countRes = mysqli_query($mysqli,$commentN); 
+             if($commentN){
+                while($newArray=mysqli_fetch_array($countRes,MYSQLI_ASSOC)){
+                    $num=$newArray['commentNum'];
+                    echo "($num)" ;
+                }
+            }else{
+                printf("error" ); 
+            }
+             ?> 
+             <br>
 
              <form action="restList_specific.php?restName=<?php echo $restName;?>&' " method=post>
 
