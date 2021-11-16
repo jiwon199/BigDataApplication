@@ -12,7 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 $sql = "SELECT * FROM user_favorites WHERE username = '".$_SESSION["username"]."'";
 
-$result = mysqli_query($link, $sql);
+$result = mysqli_query($mysqli, $sql);
 
 echo "<table class=\"table\" >
 <thead>

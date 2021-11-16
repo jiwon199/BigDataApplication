@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // 실행할 쿼리 - username 확인
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
 
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = mysqli_prepare($mysqli, $sql)){
             // stmt에 파라미터 연결
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             // 파라미터에 값 넣기
@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    mysqli_close($link);
+    mysqli_close($mysqli);
 }
 ?>
 

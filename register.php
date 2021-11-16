@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $sql = "SELECT id FROM users WHERE username = ?";
 
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = mysqli_prepare($mysqli, $sql)){
 
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             $param_username = trim($_POST["username"]);
@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // users 테이블에 새로운 유저를 추가할 쿼리
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = mysqli_prepare($mysqli, $sql)){
             
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
             
@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    mysqli_close($link);
+    mysqli_close($mysqli);
 }
 ?>
 
