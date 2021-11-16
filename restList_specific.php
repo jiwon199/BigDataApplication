@@ -14,17 +14,14 @@
 
              <?php 
              
-               
+            session_start();
 			$restName=$_GET[ 'restName' ];
 			 
-            
+            require_once "config.php";
             $sql="select * from restList where restName = '$restName' ";
              
-            $mysqli = mysqli_connect("localhost","root","1234","restTest_db");
-            if (mysqli_connect_errno()) {
-            printf("Connect failed: %s\n", mysqli_connect_error());
-            exit();
-            } else {
+           // $mysqli = mysqli_connect("localhost","root","1234","restTest_db");
+            
         
             $res = mysqli_query($mysqli,$sql);
              
@@ -54,7 +51,7 @@
                 $val2=$val;
                   // 로그인 구현이 안됐으니 일단 이름은 anon으로 insert 
                   
-                $name='anon';
+                $name=$_SESSION["username"];
                  
                 if($val!=null&&$val!=""){  
 
@@ -107,7 +104,7 @@
                  
             
              echo   "$restName - $resttype  ";  
-        }
+        
 	    ?>
          </b>
 
@@ -172,7 +169,7 @@
                     $comment=$newArray['comment'];     
                                    
                     echo "<tr> <td> <b> $name </b>";               
-                     
+                    if($name==$_SESSION["username"]){ 
                     ?>
 
                  <form action="modifyComment.php" method="post" target="payviewer"
@@ -199,6 +196,7 @@
 
 
                      <?php
+                     }
                     echo " <br> $comment </td></tr>" ;
                  }
                  }else{
