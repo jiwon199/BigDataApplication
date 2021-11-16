@@ -45,3 +45,33 @@ insert into comment(rest,comment,nickname) values
 ('Jalsa','wow delicious','James'),
 ('Jalsa','it is dirty','KIM');
  
+
+
+/* 서연 */
+
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_favorites (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    restaurant_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE reviews (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `username` VARCHAR(50) NOT NULL,
+  `review` VARCHAR(255) NOT NULL,
+  `score` INT NOT NULL,
+  `restName` VARCHAR(100) NOT NULL
+);
+
+insert into users (username, password) values ("test2", "test2"), ("test3", "test3");
+
+insert into user_favorites (username, restaurant_name) values ("test2", "rest1"), ("test2", "rest2");
+
+insert into reviews (username, review, score, restName) values ("test2", "good", 4, "Jalsa");
