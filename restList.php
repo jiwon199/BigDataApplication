@@ -1,4 +1,4 @@
- <HTML>
+<HTML>
 
  <HEAD>
      <TITLE>Retaurant List</TITLE>
@@ -35,12 +35,8 @@
        
        
       function QueryRun($sql) {
-        $mysqli = mysqli_connect("localhost","root","pw","BDAproject");
-        if (mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
-        } else {
-        
+        require_once "config.php";
+       
         $res = mysqli_query($mysqli,$sql);
         if ($res) {
             while($newArray=mysqli_fetch_array($res,MYSQLI_ASSOC)){
@@ -67,7 +63,7 @@
          
         mysqli_close($mysqli);
         }
-    }
+     
          
          
  
