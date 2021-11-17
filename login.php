@@ -5,7 +5,7 @@ require_once "config.php";
 session_start();
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: restlist.php");
+    header("location: restList.php");
     exit;
 }
 
@@ -33,7 +33,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         session_start();
 
                         $_SESSION["loggedin"] = true;
-                        $_SESSION["id"] = $id;
                         $_SESSION["username"] = $username;
 
                         header("location: restList.php");

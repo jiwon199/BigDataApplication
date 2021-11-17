@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username = $_POST["username"];
         $location = $_POST["location"];
         $contact = $_POST["contact"];
-        $sql = "SELECT id FROM users WHERE username = '$username'";
+        $sql = "SELECT username FROM users WHERE username = '$username'";
         $res = mysqli_query($mysqli,$sql);
         if($res){
             if(mysqli_num_rows($res)!=0){

@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body{ font: 14px sans-serif; }

@@ -45,7 +45,7 @@ if($res){
         <h6>Contact: <?php echo $contact ?></h6>
         <br><br>
 
-        <a href="restlist.php" class="btn btn-primary">Back to main</a>
+        <a href="restList.php" class="btn btn-primary">Back to main</a>
         <p></p>
         <a href="reset-password.php" class="btn btn-outline-secondary">Reset Password</a>
         <a href="logout.php" class="btn btn-outline-danger">Logout</a>
