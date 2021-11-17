@@ -5,10 +5,12 @@
 require_once "config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($_POST["username"]))||empty(trim($_POST["password"]))||empty(trim($_POST["location"]))||empty(trim($_POST["contact"]))){
         echo '<script>alert("Please fill out the forms")</script>';
     }else{
         $username = $_POST["username"];
+        $location = $_POST["location"];
+        $contact = $_POST["contact"];
         $sql = "SELECT id FROM users WHERE username = '$username'";
         $res = mysqli_query($mysqli,$sql);
         if($res){
@@ -23,18 +25,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $sql = "INSERT INTO users (username, password) VALUES ('$username', '$pw')";
                     $res = mysqli_query($mysqli,$sql);
                     if($res){
-                        header("location: login.php");
+                        mysqli_free_result($res);
+                        $sql = "INSERT INTO userDetails (username, address, contact) VALUES ('$username', '$location', '$contact')";
+                        $res = mysqli_query($mysqli,$sql);
+                        if($res){
+                            header("location: login.php");
+                        }
+                    
                     }else{
                         printf(mysqli_error($mysqli));
                         echo 'error';
-                        
                     }
                 }
             }
         }else{
             echo 'error';
-        }
-        
+        } 
     }
     mysqli_close($mysqli);
 
@@ -60,12 +66,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <br><br>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label>Username</label>
+                <label>Username*</label>
                 <input type="text" name="username" class="form-control" > 
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label>Password*</label>
                 <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Location(City)*</label>
+                <input type="text" name="location" class="form-control" > 
+            </div>
+            <div class="form-group">
+                <label>Contact*</label>
+                <input type="text" name="contact" class="form-control" > 
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-success" value="submit">
