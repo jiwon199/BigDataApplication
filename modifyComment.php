@@ -19,7 +19,7 @@
         $val=$_POST[ 'contentArea' ];
         
         if($val!=null&&$val!=""){        
-            $sql="update comment set comment='$val' where nickname='$name' and comment = '$comment'";
+            $sql="update reviews set review='$val' where username='$name' and review = '$comment'";
             $res = mysqli_query($mysqli,$sql);
             
             if(!$res){
