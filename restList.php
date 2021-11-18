@@ -19,7 +19,7 @@
         if ($flag==1)
             $currentOpt="rating order-no review, no shown";
         else if($flag==2)
-            $currentOpt="cheap price order";
+            $currentOpt="menu variety order";
         else
             $currentOpt="default order";
     }
@@ -45,7 +45,7 @@
             <select name="flag">
                 <option value=0 selected>default order
                 <option value=1> rating order
-                <option value=2> cheap price order
+                <option value=2> menu variety order
             </select>
 
             <input type=submit value="ok" class='btn btn-outline-primary'>
@@ -82,11 +82,11 @@
                    
                 }
                 else if($flag==2){
-                    $cheapOrder=$newArray['cheapOrder'];
-                    $priceAvg=$newArray['priceAvg'];
-                    echo "<td>" . $cheapOrder . "</td>";
+                    $Order=$newArray['VOrder'];
+                    $numCount=$newArray['numCount'];
+                    echo "<td>" . $Order . "</td>";
                     echo "<td >" .$restName . "</td>";                   
-                    echo "<td>" . round($priceAvg,1) . "</td>";
+                    echo "<td>" . $numCount . "</td>";
                     
                 }
                 else  {
@@ -126,18 +126,18 @@
             
                 if($flag==1){
                      
-                    echo " <th>rating order</th><th>name</th> <th>avg score</th></tr> <tr>";
-                    $sql="select rest.restname, row_number() over (order by avg(rev.score)) as average ,avg(rev.score)
+                    echo " <th>rank</th><th>name</th> <th>avg score</th></tr> <tr>";
+                    $sql="select rest.restname, rank() over (order by -avg(rev.score)) as average ,avg(rev.score)
                     from restList as rest, reviews as rev
                     where rest.restname = rev.restname group by restname order by average;";
                     QueryRun($sql,$flag);
                 }
                 else if($flag==2){
-                    echo " <th>cheap order</th><th>name</th> <th>avg price</th></tr> <tr>";
-                    $sql="select restname, rank() over (order by priceAvg) as cheapOrder,priceAvg
+                    echo " <th>rank</th><th>name</th> <th>menu number</th></tr> <tr>";
+                    $sql="select restname, rank() over (order by -numCount) as VOrder,numCount
                     from  
-                    (select restname, avg(foods.price) as priceAvg from foods group by restname
-                    ) as priceT;";
+                    (select restname, count(foods.price) as numCount from foods group by restname
+                    ) as myTable;";
                     QueryRun($sql,$flag);
                 }
                 //0이거나 null이면 normal order;
