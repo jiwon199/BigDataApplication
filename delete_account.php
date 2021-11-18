@@ -14,7 +14,7 @@
 
             session_destroy();
 
-            header("location: login.php");
+            header("location: restList.php");
             exit;
         }else{
             echo 'error';
