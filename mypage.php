@@ -32,12 +32,14 @@ if($res){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body{ font: 14px sans-serif; text-align: center; }
-        .wrapper{ width: 100%; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+        .wrapper{ width: 50%; padding: 20px; position: fixed; top: 50%; left: 0%; transform: translate(0%, -50%);}
+        .wrapper2{ width: 50%; height: 80%; overflow: auto; padding: 20px; position: fixed; top: 50%; right: 0%; transform: translate(0%, -50%);}
         .table{ width:500px; margin-left: auto; margin-right: auto;}
     </style>
 
 </head>
 <body>
+
     <div class="wrapper">
         <h1 class="my-5"><?php echo htmlspecialchars($_SESSION["username"]); ?>'s Page</h1>
         <h4>My Info.</h4>
@@ -60,6 +62,42 @@ if($res){
         </script>
     <br><br><br>
         
+    </div>
+    <div class="wrapper2">
+        <h2>My reviews</h2>
+        <br>
+        <table class='table'>
+            <thead>
+                <tr>
+                <th scope="col">Restaurant</th>
+                <th scope="col">rating</th>
+                <th scope="col">review</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+
+                    $sql = "SELECT * FROM reviews WHERE username = '".$_SESSION["username"]."' ORDER BY score desc";
+
+                    $result = mysqli_query($mysqli, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+    
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['restname'] . "</td>";
+                            echo "<td>" . $row['score'] . "</td>";
+                            echo "<td>" . $row['review'] . "</td>";
+                            echo "</tr>";
+                          
+                        }
+                        
+                    } else {
+                        echo "0 results";
+                    }
+                ?>
+
+            </tbody>
+        </table>
     </div>
 
 </body>
