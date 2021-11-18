@@ -77,6 +77,7 @@
                     //실패시 롤백
                     mysqli_rollback($mysqli); 
                  }
+                 //d
                                        
                                    
                     }  
