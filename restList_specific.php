@@ -45,7 +45,8 @@
                 $val=$_POST[ 'contentArea' ];
                 $score=$_POST['satisfaction'];                        
                 $name=$_SESSION["username"];
-                  
+                if(!isset($_SESSION["username"]))
+                    $name="anon";
                 //빈 값이 아닐때만 insert
                 if($val!=null&&$val!=""){  
                  
@@ -201,8 +202,16 @@
                     else  $star="★";
                                    
                     echo "<tr> <td> <b> $name </b>";    
-                    echo " <span id='scoreText'>   $star  </span> " ;           
-                    if($name==$_SESSION["username"]){ 
+                    echo " <span id='scoreText'>   $star  </span> " ;   
+
+                    $mysname;
+                    if(!isset($_SESSION["username"]))
+                        $myname="anonUser";
+                    else{
+                        $myname=$_SESSION["username"];
+                    }        
+                        
+                    if($name==$myname){ 
                     ?>
 
                  <form action="modifyComment.php" method="post" target="payviewer"
