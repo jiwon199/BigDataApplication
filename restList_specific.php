@@ -57,7 +57,7 @@
                  $duplicate= "select * from reviews where review = '$val' and username= '$name' and restname= '$restName'" ;
                  $checkdup = mysqli_query($mysqli,$duplicate);
                  if($checkdup){
-                    $num =mysqli_num_rows($res4);    
+                    $num =mysqli_num_rows($checkdup);    
                     if($num<1){
                              //리뷰를 테이블에 넣기
                             $sqlInsert="insert into reviews(restname,review,username,score) values ( '$restName' , '$val' , '$name',$score )  ";
