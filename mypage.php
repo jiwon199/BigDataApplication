@@ -26,18 +26,46 @@ if($res){
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>My Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body{ font: 14px sans-serif; text-align: center; }
-        .wrapper{ width: 50%; padding: 20px; position: fixed; top: 50%; left: 0%; transform: translate(0%, -50%);}
-        .wrapper2{ width: 50%; height: 80%; overflow: auto; padding: 20px; position: fixed; top: 50%; right: 0%; transform: translate(0%, -50%);}
-        .table{ width:500px; margin-left: auto; margin-right: auto;}
+    body {
+        font: 14px sans-serif;
+        text-align: center;
+    }
+
+    .wrapper {
+        width: 50%;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 0%;
+        transform: translate(0%, -50%);
+    }
+
+    .wrapper2 {
+        width: 50%;
+        height: 80%;
+        overflow: auto;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        right: 0%;
+        transform: translate(0%, -50%);
+    }
+
+    .table {
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     </style>
 
 </head>
+
 <body>
 
     <div class="wrapper">
@@ -54,14 +82,14 @@ if($res){
         <a href="" onClick="open_win_editar()" class="btn btn-danger">Delete Account</a>
 
         <script language="javascript">
-            function open_win_editar() {
-                window.open (
-                    'delete_account.php', 'payviewer', 'width=1000, height=80, top=240, left=150'
-                );
-            }
+        function open_win_editar() {
+            window.open(
+                'delete_account.php', 'payviewer', 'width=1000, height=80, top=240, left=150'
+            );
+        }
         </script>
-    <br><br><br>
-        
+        <br><br><br>
+
     </div>
     <div class="wrapper2">
         <h2>My reviews</h2>
@@ -69,9 +97,9 @@ if($res){
         <table class='table'>
             <thead>
                 <tr>
-                <th scope="col">Restaurant</th>
-                <th scope="col">rating</th>
-                <th scope="col">review</th>
+                    <th scope="col">Restaurant</th>
+                    <th scope="col">rating</th>
+                    <th scope="col">review</th>
                 </tr>
             </thead>
             <tbody>

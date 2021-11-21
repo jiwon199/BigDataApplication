@@ -14,7 +14,7 @@
 
             session_destroy();
 
-            header("location: restList.php");
+            header("location: login.php");
             exit;
         }else{
             echo 'error';
@@ -26,28 +26,31 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>My Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body{ font: 14px sans-serif; }
-        
+    body {
+        font: 14px sans-serif;
+    }
     </style>
 
 </head>
+
 <body>
     <div class="container">
         <br>
         <p>Are you sure? :(</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-           
+
             <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-success" value="yes">
             </div>
-            
+
         </form>
-        
+
     </div>
 
 </body>

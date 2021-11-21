@@ -12,7 +12,8 @@
 
      <div class="wrapper">
          <b id="restName">
- 	     <div class='mypage'>
+
+             <div class='mypage'>
                  <a href="restList.php" class="btn btn-outline-primary">back to main page</a>
              </div>
              <?php 
@@ -58,7 +59,7 @@
                  $checkdup = mysqli_query($mysqli,$duplicate);
                  if($checkdup){
                     $num =mysqli_num_rows($checkdup);    
-                    if($num<1){
+                    if($num<1){ 
                              //리뷰를 테이블에 넣기
                             $sqlInsert="insert into reviews(restname,review,username,score) values ( '$restName' , '$val' , '$name',$score )  ";
                             $InsertReview=mysqli_query($mysqli,$sqlInsert); 
