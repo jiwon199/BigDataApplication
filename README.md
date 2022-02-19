@@ -1,1 +1,1 @@
-# BigDataApplication
+# 레스토랑 리뷰 사이트
