@@ -1,47 +1,53 @@
 
 /* createDB, useDB는 각자 로컬에서 */
 CREATE TABLE restList (
-    restID int(11) NOT NULL AUTO_INCREMENT,
-    restName VARCHAR(80) DEFAULT NULL,
-    rest_type VARCHAR(80) DEFAULT NULL,
-    rate float(10) DEFAULT NULL,
-    addr VARCHAR(80) DEFAULT NULL,
+    restname VARCHAR(255) NOT NULL,
+    resttype VARCHAR(80) DEFAULT NULL,
+    addr VARCHAR(255) DEFAULT NULL,
     tel VARCHAR(80) DEFAULT NULL,
-    location VARCHAR(80) DEFAULT NULL,
-    PRIMARY KEY (restID)
-) ;
-
-CREATE TABLE food (
-   rest VARCHAR(80) DEFAULT NULL,
-    food VARCHAR(80) DEFAULT NULL 
-) ;
-
-CREATE TABLE comment (
-   rest VARCHAR(80) DEFAULT NULL,
-   comment VARCHAR(140) DEFAULT NULL ,
-   nickname VARCHAR(80) DEFAULT NULL
+    location VARCHAR(255) DEFAULT NULL,
     
+    PRIMARY KEY (restname)
 ) ;
 
-insert into restList(restName,rest_type,rate,addr,tel,location) values 
-('Jalsa','Casual Dining',4.8,'942, 21st Main Road, 2nd Stage, Banashankari, Bangalore','080 42297555','Banashankari'),
-('Onesta','Cafe',4.6,'1st Floor, Annakuteera, 3rd Stage, Banashankari, Bangalore','080 4264555','Kumaraswamy'),
-('lalala','Cafe',4.3,'2st Floor, Annakuteera, 3rd Stage, Banashankari, Bangalore','080 4267555','Kumaraswamy');
+CREATE TABLE reviews (
+  `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `username` VARCHAR(80) NOT NULL,
+  `review` VARCHAR(255) NOT NULL,
+  `score` INT NOT NULL,
+  `restname` VARCHAR(255) NOT NULL,
+   foreign key(restname) references restList(restname) ON DELETE CASCADE ON UPDATE CASCADE
+);
 
-
-insert into food(rest,food) values ('lalala','ICE Coffee'),
-('lalala','Hot Coffee'),
-('Onesta','Hot Coffee'),
-('Onesta','ICE Coffee'),
-('Onesta','Latte'),
-('Jalsa','pasta'),
-('Jalsa','pizza');
-
-insert into comment(rest,comment,nickname) values 
-('lalala','nice.','Jiwon'),
-('Onesta','my favorite','Kim'),
-('Onesta','good to study','Kim'),
-('Onesta','I love it','Jiwon'),
-('Jalsa','wow delicious','James'),
-('Jalsa','it is dirty','KIM');
+CREATE TABLE foods (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    restname VARCHAR(255) NOT NULL,
+	  food VARCHAR(80) DEFAULT NULL,
+    price FLOAT DEFAULT NULL,
+    foreign key(restname) references restList(restname) ON DELETE CASCADE ON UPDATE CASCADE
+  
+);
  
+CREATE TABLE employee(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(80) NOT NULL,
+  restname VARCHAR(255) NOT NULL,
+  role VARCHAR(80) DEFAULT NULL,
+foreign key(restname) references restList(restname) ON DELETE CASCADE ON UPDATE CASCADE
+   
+);
+
+CREATE TABLE users (
+    username VARCHAR(80) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+	  PRIMARY KEY (username)
+);
+
+
+CREATE TABLE userDetails(
+  username VARCHAR(80) NOT NULL,
+	address VARCHAR(80) DEFAULT NULL,
+  contact VARCHAR(80) DEFAULT NULL,
+	foreign key(username) references users(username) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
